@@ -147,7 +147,7 @@ export const user = new Elysia()
             `}
           >
             <article class="article">
-              <form method="post" class="flex flex-col gap-4">
+              <form method="post" action={`${WEBROOT}/register`} class="flex flex-col gap-4">
                 <fieldset class="mb-4 flex flex-col gap-4">
                   <label class="flex flex-col gap-1">
                     Email
@@ -269,7 +269,7 @@ export const user = new Elysia()
               `}
             >
               <article class="article">
-                <form method="post" class="flex flex-col gap-4">
+                <form method="post" action={`${WEBROOT}/login`} class="flex flex-col gap-4">
                   <fieldset class="mb-4 flex flex-col gap-4">
                     <label class="flex flex-col gap-1">
                       Email
@@ -404,7 +404,7 @@ export const user = new Elysia()
               `}
             >
               <article class="article">
-                <form method="post" class="flex flex-col gap-4">
+                <form method="post" action={`${WEBROOT}/account`} class="flex flex-col gap-4">
                   <fieldset class="mb-4 flex flex-col gap-4">
                     <label class="flex flex-col gap-1">
                       Email
