@@ -46,14 +46,14 @@ export const userService = new Elysia({ name: "user/service" })
       if (!auth.value) {
         return status(401, {
           success: false,
-          message: "Unauthorized",
+          message: "未授权",
         });
       }
       const user = await jwt.verify(auth.value);
       if (!user) {
         return status(401, {
           success: false,
-          message: "Unauthorized",
+          message: "未授权",
         });
       }
       return {
@@ -71,45 +71,45 @@ export const user = new Elysia()
     }
 
     return (
-      <BaseHtml title="ConvertX | Setup" webroot={WEBROOT}>
+      <BaseHtml title="ConvertX | 设置" webroot={WEBROOT}>
         <main
           class={`
             mx-auto w-full max-w-4xl flex-1 px-2
             sm:px-4
           `}
         >
-          <h1 class="my-8 text-3xl">Welcome to ConvertX!</h1>
+          <h1 class="my-8 text-3xl">欢迎使用 ConvertX！</h1>
           <article class="article p-0">
-            <header class="w-full bg-neutral-800 p-4">Create your account</header>
+            <header class="w-full bg-neutral-800 p-4">创建您的账户</header>
             <form method="post" action={`${WEBROOT}/register`} class="p-4">
               <fieldset class="mb-4 flex flex-col gap-4">
                 <label class="flex flex-col gap-1">
-                  Email
+                  邮箱
                   <input
                     type="email"
                     name="email"
                     class="rounded-sm bg-neutral-800 p-3"
-                    placeholder="Email"
+                    placeholder="邮箱"
                     autocomplete="email"
                     required
                   />
                 </label>
                 <label class="flex flex-col gap-1">
-                  Password
+                  密码
                   <input
                     type="password"
                     name="password"
                     class="rounded-sm bg-neutral-800 p-3"
-                    placeholder="Password"
+                    placeholder="密码"
                     autocomplete="current-password"
                     required
                   />
                 </label>
               </fieldset>
-              <input type="submit" value="Create account" class="btn-primary" />
+              <input type="submit" value="创建账户" class="btn-primary" />
             </form>
             <footer class="p-4">
-              Report any issues on{" "}
+              如有问题，请反馈至{" "}
               <a
                 class={`
                   text-accent-500 underline
@@ -132,7 +132,7 @@ export const user = new Elysia()
     }
 
     return (
-      <BaseHtml webroot={WEBROOT} title="ConvertX | Register">
+      <BaseHtml webroot={WEBROOT} title="ConvertX | 注册">
         <>
           <Header
             webroot={WEBROOT}
@@ -172,7 +172,7 @@ export const user = new Elysia()
                     />
                   </label>
                 </fieldset>
-                <input type="submit" value="Register" class="w-full btn-primary" />
+                <input type="submit" value="注册" class="w-full btn-primary" />
               </form>
             </article>
           </main>
@@ -195,7 +195,7 @@ export const user = new Elysia()
       if (existingUser) {
         set.status = 400;
         return {
-          message: "Email already in use.",
+          message: "邮箱已被使用。",
         };
       }
       const savedPassword = await Bun.password.hash(password);
@@ -207,7 +207,7 @@ export const user = new Elysia()
       if (!user) {
         set.status = 500;
         return {
-          message: "Failed to create user.",
+          message: "创建用户失败。",
         };
       }
 
@@ -218,7 +218,7 @@ export const user = new Elysia()
       if (!auth) {
         set.status = 500;
         return {
-          message: "No auth cookie, perhaps your browser is blocking cookies.",
+          message: "没有认证 Cookie，可能是您的浏览器阻止了 Cookie。",
         };
       }
 
@@ -254,7 +254,7 @@ export const user = new Elysia()
       }
 
       return (
-        <BaseHtml webroot={WEBROOT} title="ConvertX | Login">
+        <BaseHtml webroot={WEBROOT} title="ConvertX | 登录">
           <>
             <Header
               webroot={WEBROOT}
@@ -301,10 +301,10 @@ export const user = new Elysia()
                         role="button"
                         class="w-full btn-secondary text-center"
                       >
-                        Register
+                        注册
                       </a>
                     ) : null}
-                    <input type="submit" value="Login" class="w-full btn-primary" />
+                    <input type="submit" value="登录" class="w-full btn-primary" />
                   </div>
                 </form>
               </article>
@@ -323,7 +323,7 @@ export const user = new Elysia()
       if (!existingUser) {
         set.status = 403;
         return {
-          message: "Invalid credentials.",
+          message: "凭据无效。",
         };
       }
 
@@ -332,7 +332,7 @@ export const user = new Elysia()
       if (!validPassword) {
         set.status = 403;
         return {
-          message: "Invalid credentials.",
+          message: "凭据无效。",
         };
       }
 
@@ -343,7 +343,7 @@ export const user = new Elysia()
       if (!auth) {
         set.status = 500;
         return {
-          message: "No auth cookie, perhaps your browser is blocking cookies.",
+          message: "没有认证 Cookie，可能是您的浏览器阻止了 Cookie。",
         };
       }
 
@@ -388,7 +388,7 @@ export const user = new Elysia()
       }
 
       return (
-        <BaseHtml webroot={WEBROOT} title="ConvertX | Account">
+        <BaseHtml webroot={WEBROOT} title="ConvertX | 账户">
           <>
             <Header
               webroot={WEBROOT}
@@ -419,29 +419,29 @@ export const user = new Elysia()
                       />
                     </label>
                     <label class="flex flex-col gap-1">
-                      Password (leave blank for unchanged)
+                      新密码（留空则不修改）
                       <input
                         type="password"
                         name="newPassword"
                         class="rounded-sm bg-neutral-800 p-3"
-                        placeholder="Password"
+                        placeholder="新密码"
                         autocomplete="new-password"
                       />
                     </label>
                     <label class="flex flex-col gap-1">
-                      Current Password
+                      当前密码
                       <input
                         type="password"
                         name="password"
                         class="rounded-sm bg-neutral-800 p-3"
-                        placeholder="Password"
+                        placeholder="当前密码"
                         autocomplete="current-password"
                         required
                       />
                     </label>
                   </fieldset>
                   <div role="group">
-                    <input type="submit" value="Update" class="w-full btn-primary" />
+                    <input type="submit" value="更新" class="w-full btn-primary" />
                   </div>
                 </form>
               </article>
@@ -479,7 +479,7 @@ export const user = new Elysia()
       if (!validPassword) {
         set.status = 403;
         return {
-          message: "Invalid credentials.",
+          message: "凭据无效。",
         };
       }
 

@@ -30,7 +30,7 @@ export const deleteFile = new Elysia().use(userService).post(
     await unlink(targetPath);
 
     return {
-      message: "File deleted successfully.",
+      message: "文件删除成功。",
     };
   },
   { body: t.Object({ filename: t.String() }), auth: true },

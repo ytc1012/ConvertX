@@ -45,7 +45,7 @@ export const deleteJob = new Elysia()
 
       if (!Array.isArray(jobIds) || jobIds.length === 0) {
         set.status = 400;
-        return { success: false, message: "Invalid job IDs provided" };
+        return { success: false, message: "提供的任务 ID 无效" };
       }
 
       const results = {
@@ -64,7 +64,7 @@ export const deleteJob = new Elysia()
           if (!job) {
             results.failed.push({
               jobId,
-              error: "Job not found or unauthorized",
+              error: "任务未找到或未授权",
             });
             continue;
           }
@@ -94,7 +94,7 @@ export const deleteJob = new Elysia()
         } catch (error) {
           results.failed.push({
             jobId,
-            error: error instanceof Error ? error.message : "Unknown error",
+            error: error instanceof Error ? error.message : "未知错误",
           });
         }
       }

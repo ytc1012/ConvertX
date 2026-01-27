@@ -9,7 +9,7 @@ export const listConverters = new Elysia().use(userService).get(
   "/converters",
   async () => {
     return (
-      <BaseHtml webroot={WEBROOT} title="ConvertX | Converters">
+      <BaseHtml webroot={WEBROOT} title="ConvertX | 转换器">
         <>
           <Header webroot={WEBROOT} allowUnauthenticated={ALLOW_UNAUTHENTICATED} loggedIn />
           <main
@@ -19,7 +19,7 @@ export const listConverters = new Elysia().use(userService).get(
             `}
           >
             <article class="article">
-              <h1 class="mb-4 text-xl">Converters</h1>
+              <h1 class="mb-4 text-xl">转换器</h1>
               <table
                 class={`
                   w-full table-auto rounded-sm bg-neutral-900 text-left
@@ -30,9 +30,9 @@ export const listConverters = new Elysia().use(userService).get(
               >
                 <thead>
                   <tr>
-                    <th class="mx-4 my-2">Converter</th>
-                    <th class="mx-4 my-2">From (Count)</th>
-                    <th class="mx-4 my-2">To (Count)</th>
+                    <th class="mx-4 my-2">转换器</th>
+                    <th class="mx-4 my-2">输入格式（数量）</th>
+                    <th class="mx-4 my-2">输出格式（数量）</th>
                   </tr>
                 </thead>
                 <tbody>
@@ -42,7 +42,7 @@ export const listConverters = new Elysia().use(userService).get(
                       <tr>
                         <td safe>{converter}</td>
                         <td>
-                          Count: {inputs.length}
+                          数量：{inputs.length}
                           <ul>
                             {inputs.map((input) => (
                               <li safe>{input}</li>
@@ -50,7 +50,7 @@ export const listConverters = new Elysia().use(userService).get(
                           </ul>
                         </td>
                         <td>
-                          Count: {targets.length}
+                          数量：{targets.length}
                           <ul>
                             {targets.map((target) => (
                               <li safe>{target}</li>

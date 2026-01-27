@@ -21,7 +21,7 @@ function ResultsArticle({
   return (
     <article class="article">
       <div class="mb-4 flex items-center justify-between">
-        <h1 class="text-xl">Results</h1>
+        <h1 class="text-xl">转换结果</h1>
         <div class="flex flex-row gap-4">
           <a
             style={files.length !== job.num_files ? "pointer-events: none;" : ""}
@@ -29,7 +29,7 @@ function ResultsArticle({
             href={`${WEBROOT}/delete/${job.id}`}
             {...(files.length !== job.num_files ? { disabled: true, "aria-busy": "true" } : "")}
           >
-            <DeleteIcon /> <p>Delete</p>
+            <DeleteIcon /> <p>删除</p>
           </a>
           <a
             style={files.length !== job.num_files ? "pointer-events: none;" : ""}
@@ -38,10 +38,10 @@ function ResultsArticle({
             class="flex btn-primary flex-row gap-2 text-contrast"
             {...(files.length !== job.num_files ? { disabled: true, "aria-busy": "true" } : "")}
           >
-            <DownloadIcon /> <p>Tar</p>
+            <DownloadIcon /> <p>打包</p>
           </a>
           <button class="flex btn-primary flex-row gap-2 text-contrast" onclick="downloadAll()">
-            <DownloadIcon /> <p>All</p>
+            <DownloadIcon /> <p>全部</p>
           </button>
         </div>
       </div>
@@ -72,7 +72,7 @@ function ResultsArticle({
                 sm:px-4
               `}
             >
-              Converted File Name
+              转换后的文件名
             </th>
             <th
               class={`
@@ -80,7 +80,7 @@ function ResultsArticle({
                 sm:px-4
               `}
             >
-              Status
+              状态
             </th>
             <th
               class={`
@@ -88,7 +88,7 @@ function ResultsArticle({
                 sm:px-4
               `}
             >
-              Actions
+              操作
             </th>
           </tr>
         </thead>
@@ -146,7 +146,7 @@ export const results = new Elysia()
       if (!job) {
         set.status = 404;
         return {
-          message: "Job not found.",
+          message: "任务未找到。",
         };
       }
 
@@ -158,7 +158,7 @@ export const results = new Elysia()
         .all(params.jobId);
 
       return (
-        <BaseHtml webroot={WEBROOT} title="ConvertX | Result">
+        <BaseHtml webroot={WEBROOT} title="ConvertX | 转换结果">
           <>
             <Header webroot={WEBROOT} allowUnauthenticated={ALLOW_UNAUTHENTICATED} loggedIn />
             <main
@@ -192,7 +192,7 @@ export const results = new Elysia()
       if (!job) {
         set.status = 404;
         return {
-          message: "Job not found.",
+          message: "任务未找到。",
         };
       }
 

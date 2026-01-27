@@ -44,7 +44,7 @@ export const root = new Elysia().use(userService).get(
       user = { id: newUserId };
       if (!auth) {
         return {
-          message: "No auth cookie, perhaps your browser is blocking cookies.",
+          message: "没有认证 Cookie，可能是您的浏览器阻止了 Cookie。",
         };
       }
 
@@ -91,7 +91,7 @@ export const root = new Elysia().use(userService).get(
       .get(user.id) as { id: number };
 
     if (!jobId) {
-      return { message: "Cookies should be enabled to use this app." };
+      return { message: "需要启用 Cookie 才能使用此应用。" };
     }
 
     jobId.set({
@@ -121,7 +121,7 @@ export const root = new Elysia().use(userService).get(
             `}
           >
             <article class="article">
-              <h1 class="mb-4 text-xl">Convert</h1>
+              <h1 class="mb-4 text-xl">转换</h1>
               <div class="mb-4 scrollbar-thin max-h-[50vh] overflow-y-auto">
                 <table
                   id="file-list"
@@ -143,7 +143,7 @@ export const root = new Elysia().use(userService).get(
                 `}
               >
                 <span>
-                  <b>Choose a file</b> or drag it here
+                  <b>选择文件</b>或拖拽到此处
                 </span>
                 <input
                   type="file"
@@ -163,7 +163,7 @@ export const root = new Elysia().use(userService).get(
                 <input
                   type="search"
                   name="convert_to_search"
-                  placeholder="Search for conversions"
+                  placeholder="搜索转换格式"
                   autocomplete="off"
                   class="w-full rounded-sm bg-neutral-800 p-4"
                 />
@@ -209,9 +209,9 @@ export const root = new Elysia().use(userService).get(
                   </article>
 
                   {/* Hidden element which determines the format to convert the file too and the converter to use */}
-                  <select name="convert_to" aria-label="Convert to" required hidden>
+                  <select name="convert_to" aria-label="转换到" required hidden>
                     <option selected disabled value="">
-                      Convert to
+                      转换到
                     </option>
                     {Object.entries(getAllTargets()).map(([converter, targets]) => (
                       <optgroup label={converter}>
@@ -231,7 +231,7 @@ export const root = new Elysia().use(userService).get(
                   disabled:cursor-not-allowed disabled:opacity-50
                 `}
                 type="submit"
-                value="Convert"
+                value="转换"
                 disabled
               />
             </form>

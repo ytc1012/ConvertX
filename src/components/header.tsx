@@ -24,7 +24,7 @@ export const Header = ({
               `}
               href={`${webroot}/history`}
             >
-              History
+              历史记录
             </a>
           </li>
         )}
@@ -37,7 +37,7 @@ export const Header = ({
               `}
               href={`${webroot}/account`}
             >
-              Account
+              账户
             </a>
           </li>
         ) : null}
@@ -50,7 +50,7 @@ export const Header = ({
               `}
               href={`${webroot}/logoff`}
             >
-              Logout
+              退出登录
             </a>
           </li>
         ) : null}
@@ -67,7 +67,7 @@ export const Header = ({
             `}
             href={`${webroot}/login`}
           >
-            Login
+            登录
           </a>
         </li>
         {accountRegistration ? (
@@ -79,7 +79,7 @@ export const Header = ({
               `}
               href={`${webroot}/register`}
             >
-              Register
+              注册
             </a>
           </li>
         ) : null}

@@ -23,7 +23,7 @@ dropZone.addEventListener("drop", (e) => {
   const files = e.dataTransfer.files;
 
   if (files.length === 0) {
-    console.warn("No files dropped — likely a URL or unsupported source.");
+    console.warn("没有文件被拖放——可能是 URL 或不支持的来源。");
     return;
   }
 
@@ -42,7 +42,7 @@ function handleFile(file) {
     <td>${file.name}</td>
     <td><progress max="100" class="inline-block h-2 appearance-none overflow-hidden rounded-full border-0 bg-neutral-700 bg-none text-accent-500 accent-accent-500 [&::-moz-progress-bar]:bg-accent-500 [&::-webkit-progress-value]:rounded-full [&::-webkit-progress-value]:[background:none] [&[value]::-webkit-progress-value]:bg-accent-500 [&[value]::-webkit-progress-value]:transition-[inline-size]"></progress></td>
     <td>${(file.size / 1024).toFixed(2)} kB</td>
-    <td><a onclick="deleteRow(this)">Remove</a></td>
+    <td><a onclick="deleteRow(this)">移除</a></td>
   `;
 
   if (!fileType) {
@@ -111,7 +111,7 @@ const updateSearchBar = () => {
     for (const target of targets) {
       target.onmousedown = () => {
         convertToElement.value = target.dataset.value;
-        convertToInput.value = `${target.dataset.target} using ${target.dataset.converter}`;
+        convertToInput.value = `${target.dataset.target} 使用 ${target.dataset.converter}`;
         formatSelected = true;
         if (pendingFiles === 0 && fileNames.length > 0) {
           convertButton.disabled = false;
@@ -162,7 +162,7 @@ fileInput.addEventListener("change", (e) => {
 
 const setTitle = () => {
   const title = document.querySelector("h1");
-  title.textContent = `Convert ${fileType ? `.${fileType}` : ""}`;
+  title.textContent = `转换${fileType ? ` .${fileType}` : ""}`;
 };
 
 // Add a onclick for the delete button
@@ -198,7 +198,7 @@ const deleteRow = (target) => {
 
 const uploadFile = (file) => {
   convertButton.disabled = true;
-  convertButton.textContent = "Uploading...";
+  convertButton.textContent = "上传中...";
   pendingFiles += 1;
 
   const formData = new FormData();
@@ -216,7 +216,7 @@ const uploadFile = (file) => {
       if (formatSelected) {
         convertButton.disabled = false;
       }
-      convertButton.textContent = "Convert";
+      convertButton.textContent = "转换";
     }
 
     //Remove the progress bar when upload is done

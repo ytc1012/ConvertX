@@ -45,9 +45,9 @@ export const chooseConverter = new Elysia().use(userService).post(
           ))}
         </article>
 
-        <select name="convert_to" aria-label="Convert to" required hidden>
+        <select name="convert_to" aria-label="转换到" required hidden>
           <option selected disabled value="">
-            Convert to
+            转换到
           </option>
           {Object.entries(getPossibleTargets(body.fileType)).map(([converter, targets]) => (
             <optgroup label={converter}>

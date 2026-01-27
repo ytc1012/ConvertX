@@ -9,7 +9,7 @@ export const BaseHtml = ({
   title?: string;
   webroot?: string;
 }) => (
-  <html lang="en">
+  <html lang="zh-CN">
     <head>
       <meta charset="UTF-8" />
       <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -25,7 +25,7 @@ export const BaseHtml = ({
       {children}
       <footer class="w-full">
         <div class="p-4 text-center text-sm text-neutral-500">
-          <span>Powered by </span>
+          <span>由 </span>
           <a
             href="https://github.com/C4illin/ConvertX"
             class={`
@@ -35,7 +35,7 @@ export const BaseHtml = ({
           >
             ConvertX{" "}
           </a>
-          <span safe>v{version || ""}</span>
+          <span safe>v{version || ""}</span> 驱动
         </div>
       </footer>
     </body>

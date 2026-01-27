@@ -32,7 +32,7 @@ export const history = new Elysia().use(userService).get(
     userJobs = userJobs.filter((job) => job.num_files > 0);
 
     return (
-      <BaseHtml webroot={WEBROOT} title="ConvertX | Results">
+      <BaseHtml webroot={WEBROOT} title="ConvertX | 转换结果">
         <>
           <Header
             webroot={WEBROOT}
@@ -48,7 +48,7 @@ export const history = new Elysia().use(userService).get(
           >
             <article class="article">
               <div class="mb-4 flex items-center justify-between">
-                <h1 class="text-xl">Results</h1>
+                <h1 class="text-xl">转换结果</h1>
                 <div id="delete-selected-container">
                   <button
                     id="delete-selected-btn"
@@ -60,7 +60,7 @@ export const history = new Elysia().use(userService).get(
                   >
                     <DeleteIcon />{" "}
                     <span>
-                      Delete Selected (<span id="selected-count">0</span>)
+                      删除选中 (<span id="selected-count">0</span>)
                     </span>
                   </button>
                 </div>
@@ -84,7 +84,7 @@ export const history = new Elysia().use(userService).get(
                         type="checkbox"
                         id="select-all"
                         class="size-4 cursor-pointer"
-                        title="Select all"
+                        title="全选"
                       />
                     </th>
                     <th
@@ -93,7 +93,7 @@ export const history = new Elysia().use(userService).get(
                         sm:px-4
                       `}
                     >
-                      <span class="sr-only">Expand details</span>
+                      <span class="sr-only">展开详情</span>
                     </th>
                     <th
                       class={`
@@ -101,7 +101,7 @@ export const history = new Elysia().use(userService).get(
                         sm:px-4
                       `}
                     >
-                      Time
+                      时间
                     </th>
                     <th
                       class={`
@@ -109,7 +109,7 @@ export const history = new Elysia().use(userService).get(
                         sm:px-4
                       `}
                     >
-                      Files
+                      文件
                     </th>
                     <th
                       class={`
@@ -118,7 +118,7 @@ export const history = new Elysia().use(userService).get(
                         sm:px-4
                       `}
                     >
-                      Files Done
+                      已完成
                     </th>
                     <th
                       class={`
@@ -126,7 +126,7 @@ export const history = new Elysia().use(userService).get(
                         sm:px-4
                       `}
                     >
-                      Status
+                      状态
                     </th>
                     <th
                       class={`
@@ -134,7 +134,7 @@ export const history = new Elysia().use(userService).get(
                         sm:px-4
                       `}
                     >
-                      Actions
+                      操作
                     </th>
                   </tr>
                 </thead>
@@ -199,7 +199,7 @@ export const history = new Elysia().use(userService).get(
                       <tr id={`details-${job.id}`} class="hidden">
                         <td colspan="7">
                           <div class="p-2 text-sm text-neutral-500">
-                            <div class="mb-1 font-semibold">Detailed File Information:</div>
+                            <div class="mb-1 font-semibold">文件详细信息：</div>
                             {job.files_detailed.map((file: Filename) => (
                               <div class="flex items-center">
                                 <span class="w-5/12 truncate" title={file.file_name} safe>
@@ -296,7 +296,7 @@ export const history = new Elysia().use(userService).get(
 
                   if (jobIds.length === 0) return;
 
-                  const confirmed = confirm(\`Are you sure you want to delete \${jobIds.length} job(s)? This action cannot be undone.\`);
+                  const confirmed = confirm(\`您确定要删除 \${jobIds.length} 个任务吗？此操作无法撤销。\`);
                   if (!confirmed) return;
 
                   try {
@@ -315,14 +315,14 @@ export const history = new Elysia().use(userService).get(
                     const result = await response.json();
 
                     if (result.success || result.deleted > 0) {
-                      alert(\`Successfully deleted \${result.deleted} job(s).\${result.failed > 0 ? \` Failed to delete \${result.failed} job(s).\` : ''}\`);
+                      alert(\`成功删除 \${result.deleted} 个任务。\${result.failed > 0 ? \` 未能删除 \${result.failed} 个任务。\` : ''}\`);
                       window.location.reload();
                     } else {
-                      alert('Failed to delete jobs. Please try again.');
+                      alert('删除任务失败，请重试。');
                     }
                   } catch (error) {
                     console.error('Error deleting jobs:', error);
-                    alert('An error occurred while deleting jobs. Please try again.');
+                    alert('删除任务时发生错误，请重试。');
                   }
                 });
               });

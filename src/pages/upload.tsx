@@ -35,7 +35,7 @@ export const upload = new Elysia().use(userService).post(
     }
 
     return {
-      message: "Files uploaded successfully.",
+      message: "文件上传成功。",
     };
   },
   { body: t.Object({ file: t.Files() }), auth: true },
