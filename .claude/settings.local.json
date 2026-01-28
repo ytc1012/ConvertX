@@ -1,7 +1,10 @@
 {
   "permissions": {
     "allow": [
-      "Bash(bun run lint:tsc:*)"
+      "Bash(bun run lint:tsc:*)",
+      "Bash(dir:*)",
+      "Bash(git checkout:*)",
+      "Bash(bun run build:*)"
     ]
   }
 }

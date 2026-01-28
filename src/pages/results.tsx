@@ -9,6 +9,15 @@ import { DeleteIcon } from "../icons/delete";
 import { EyeIcon } from "../icons/eye";
 import { userService } from "./user";
 
+function translateStatus(status: string): string {
+  const statusMap: Record<string, string> = {
+    completed: "已完成",
+    pending: "处理中",
+    failed: "失败",
+  };
+  return statusMap[status] || status;
+}
+
 function ResultsArticle({
   job,
   files,
@@ -98,7 +107,7 @@ function ResultsArticle({
               <td safe class="max-w-[20vw] truncate">
                 {file.output_file_name}
               </td>
-              <td safe>{file.status}</td>
+              <td safe>{translateStatus(file.status)}</td>
               <td class="flex flex-row gap-4">
                 <a
                   class={`

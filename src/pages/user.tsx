@@ -150,23 +150,23 @@ export const user = new Elysia()
               <form method="post" action={`${WEBROOT}/register`} class="flex flex-col gap-4">
                 <fieldset class="mb-4 flex flex-col gap-4">
                   <label class="flex flex-col gap-1">
-                    Email
+                    邮箱
                     <input
                       type="email"
                       name="email"
                       class="rounded-sm bg-neutral-800 p-3"
-                      placeholder="Email"
+                      placeholder="邮箱"
                       autocomplete="email"
                       required
                     />
                   </label>
                   <label class="flex flex-col gap-1">
-                    Password
+                    密码
                     <input
                       type="password"
                       name="password"
                       class="rounded-sm bg-neutral-800 p-3"
-                      placeholder="Password"
+                      placeholder="密码"
                       autocomplete="current-password"
                       required
                     />
@@ -272,23 +272,23 @@ export const user = new Elysia()
                 <form method="post" action={`${WEBROOT}/login`} class="flex flex-col gap-4">
                   <fieldset class="mb-4 flex flex-col gap-4">
                     <label class="flex flex-col gap-1">
-                      Email
+                      邮箱
                       <input
                         type="email"
                         name="email"
                         class="rounded-sm bg-neutral-800 p-3"
-                        placeholder="Email"
+                        placeholder="邮箱"
                         autocomplete="email"
                         required
                       />
                     </label>
                     <label class="flex flex-col gap-1">
-                      Password
+                      密码
                       <input
                         type="password"
                         name="password"
                         class="rounded-sm bg-neutral-800 p-3"
-                        placeholder="Password"
+                        placeholder="密码"
                         autocomplete="current-password"
                         required
                       />
@@ -407,12 +407,12 @@ export const user = new Elysia()
                 <form method="post" action={`${WEBROOT}/account`} class="flex flex-col gap-4">
                   <fieldset class="mb-4 flex flex-col gap-4">
                     <label class="flex flex-col gap-1">
-                      Email
+                      邮箱
                       <input
                         type="email"
                         name="email"
                         class="rounded-sm bg-neutral-800 p-3"
-                        placeholder="Email"
+                        placeholder="邮箱"
                         autocomplete="email"
                         value={userData.email}
                         required

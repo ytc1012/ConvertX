@@ -241,13 +241,13 @@ async function mainConverter(
       return result;
     }
 
-    return "Done";
+    return "完成";
   } catch (error) {
     console.error(
       `Failed to convert ${inputFilePath} from ${fileType} to ${convertTo} using ${converterName}.`,
       error,
     );
-    return "Failed, check logs";
+    return "失败，请查看日志";
   }
 }
 
@@ -273,8 +273,32 @@ for (const converterName in properties) {
 
 export const getPossibleTargets = (from: string): Record<string, string[]> => {
   const fromClean = normalizeFiletype(from);
+  const targets = possibleTargets[fromClean] || {};
 
-  return possibleTargets[fromClean] || {};
+  // 对 FFmpeg 进行特殊处理：过滤掉不合理的转换
+  if (targets.ffmpeg) {
+    const imageFormats = new Set([
+      "bmp", "dds", "dpx", "exr", "gif", "ico", "image2", "j2k", "jpeg", "jpg",
+      "jxl", "pam", "pbm", "pcx", "pgm", "png", "ppm", "psd", "rgb", "sgi",
+      "svg", "svgz", "sun", "targa", "tga", "tif", "tiff", "webp", "xbm", "xwd", "yuv"
+    ]);
+
+    // 如果输入是图像格式，只输出图像和视频格式（不输出纯音频格式）
+    if (imageFormats.has(fromClean)) {
+      targets.ffmpeg = targets.ffmpeg.filter((target: string) => {
+        const targetLower = target.toLowerCase();
+        // 排除纯音频格式
+        const audioFormats = new Set([
+          "aac", "ac3", "aiff", "alac", "amr", "ape", "au", "dts", "flac", "gsm",
+          "m4a", "mp2", "mp3", "oga", "ogg", "opus", "ra", "spx", "wav", "wma"
+        ]);
+        // 保留图像、视频、容器格式
+        return !audioFormats.has(targetLower.replace(/\.(mkv|mp4)/, ""));
+      });
+    }
+  }
+
+  return targets;
 };
 
 const possibleInputs: string[] = [];

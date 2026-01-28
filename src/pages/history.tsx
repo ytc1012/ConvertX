@@ -8,6 +8,15 @@ import { userService } from "./user";
 import { EyeIcon } from "../icons/eye";
 import { DeleteIcon } from "../icons/delete";
 
+function translateStatus(status: string): string {
+  const statusMap: Record<string, string> = {
+    completed: "已完成",
+    pending: "处理中",
+    failed: "失败",
+  };
+  return statusMap[status] || status;
+}
+
 export const history = new Elysia().use(userService).get(
   "/history",
   async ({ redirect, user }) => {
@@ -174,7 +183,7 @@ export const history = new Elysia().use(userService).get(
                         </td>
                         <td>{job.num_files}</td>
                         <td class="max-sm:hidden">{job.finished_files}</td>
-                        <td safe>{job.status}</td>
+                        <td safe>{translateStatus(job.status)}</td>
                         <td class="flex flex-row gap-4">
                           <a
                             class={`
